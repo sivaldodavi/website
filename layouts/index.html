@@ -1,34 +1,30 @@
 {{ partial "header.html" . -}}
-<header>
-    <h1>{{ .Title }}</h1>
-    {{ partial "navbar.html" . -}}
-</header>
-
+<h1>{{ .Title }}</h1>
+{{ partial "navbar.html" . -}}
 <main>
-    <!-- Bio curta e direta no topo -->
-    <section id="sobre">
-        <img alt="Minha Foto" src="/p/pic.webp" class="profile-pic">
-        <p><strong>Ave!</strong> Meu nome é Sivaldo Davi.</p>
-        <p>Este é meu domínio na internet.</p>
-        <p>Explore:
-            <a href="/software/">Software</a>,
-            <a href="/hardware/">Hardware</a> e
-            <a href="/websites/">Links</a>.
-        </p>
-        <div style="clear: both;"></div> <!-- Limpa o float da imagem -->
-    </section>
+    <!-- A bio agora aparece ANTES dos posts no fluxo do código -->
+    <aside>
+        <img alt="Minha Foto" src="/p/pic.webp">
+        <div>
+            <p style="margin:0"><strong>Ave!</strong> Este é meu canto na rede.</p>
+            <small>
+                <a href="/software/">Software</a> |
+                <a href="/hardware/">Hardware</a> |
+                <a href="/websites/">Links</a>
+            </small>
+        </div>
+    </aside>
 
-    <section id="blog">
-        <h2>Escritos</h2>
+    <section>
+        <h2>Posts Recentes</h2>
         <ul>
         {{ range where .Site.RegularPages "Section" "blog" }}
-            <li>
-                <code>{{.Date.Format "2006-01-02"}}</code> -
-                <a href="{{.Permalink}}">{{.Title}}</a>
-            </li>
+        <li>
+            <span>{{.Date.Format "02/01/2006"}}</span>
+            <a href="{{.Permalink}}" style="font-weight: bold; font-size: 1.1em;">{{.Title}}</a>
+        </li>
         {{ end }}
         </ul>
     </section>
 </main>
-
 {{ partial "footer.html" . }}

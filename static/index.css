@@ -1,42 +1,123 @@
-/* Estética Terminal/Plain-Text */
-body {
-    font-family: monospace; /* Fonte padrão do sistema, sem carregar arquivos externos */
-    line-height: 1.5;
-    max-width: 750px;
-    margin: 40px auto;
-    padding: 0 15px;
-    background: #111; /* Preto puro ou quase preto */
-    color: #ccc;
+/* Paleta baseada no Gruvbox (que você já usa), mas mais refinada */
+:root {
+    --bg: #1d2021;
+    --fg: #ebdbb2;
+    --accent: #fe8019; /* Seu laranja */
+    --gray: #928374;
+    --bg-alt: #282828;
 }
 
-/* Títulos simples */
-h1, h2, h3 { color: #fff; text-align: left; }
-h2 { border-bottom: 1px solid #333; padding-bottom: 5px; margin-top: 2em; }
+body {
+    font-family: ui-monospace, 'Cascadia Code', 'Source Code Pro', Menlo, Consolas, monospace;
+    line-height: 1.6;
+    max-width: 700px; /* Um pouco mais estreito para focar a leitura */
+    padding: 2em 1em;
+    margin: 0 auto;
+    background: var(--bg);
+    color: var(--fg);
+}
 
-/* Links padrão da "Web Raiz" */
-a { color: #fe8019; text-decoration: none; }
-a:hover { text-decoration: underline; }
+/* Títulos mais limpos */
+h1, h2, h3 {
+    text-align: left; /* Alinhamento à esquerda é mais natural em sites minimalistas */
+    color: var(--fg);
+    margin-top: 1.5em;
+}
 
-/* Navegação em lista simples (muito Wibby) */
-nav ul { padding: 0; list-style: none; display: flex; gap: 15px; }
-nav ul li { display: inline; }
-nav ul li::after { content: " |"; }
-nav ul li:last-child::after { content: ""; }
+h1 { font-size: 1.8em; border-bottom: 1px solid var(--bg-alt); padding-bottom: 0.5em; }
+h2 { font-size: 1.4em; color: var(--accent); }
 
-/* Layout Linear (sem flexbox complexo ou colunas) */
-main { display: block; }
+/* Links mais elegantes */
+a {
+    color: var(--accent);
+    text-decoration: none;
+    transition: opacity 0.2s;
+}
 
-/* Imagens leves */
-img { max-width: 100%; height: auto; border: 1px solid #333; }
-.profile-pic { width: 150px; float: left; margin: 0 20px 20px 0; }
+a:hover {
+    text-decoration: underline;
+    opacity: 0.8;
+}
 
-/* Elementos de código (sua cara!) */
-code { background: #222; padding: 2px 4px; color: #fabd2f; }
-pre { background: #000; padding: 15px; border: 1px solid #333; overflow-x: auto; }
+/* Navegação sem caixas - apenas texto e separação */
+nav {
+    text-align: left;
+    margin: 2em 0;
+}
 
-footer { margin-top: 50px; border-top: 1px solid #333; padding-top: 20px; font-size: 0.9em; color: #666; }
+.bar {
+    padding: 0;
+    list-style: none;
+    display: flex;
+    gap: 15px; /* Espaço entre itens */
+}
 
-/* Responsividade básica para celular */
-@media (max-width: 600px) {
-    .profile-pic { float: none; display: block; margin: 0 auto 20px auto; }
+.bar li { margin: 0; }
+
+.bar li a {
+    background: transparent;
+    border: none;
+    padding: 0;
+    font-size: 1.1em;
+    color: var(--fg);
+}
+
+.bar li a:hover {
+    color: var(--accent);
+    text-decoration: none;
+}
+
+/* Layout de coluna única (Diferencial principal do Bryce) */
+main {
+    display: flex;
+    flex-direction: column; /* Tudo um embaixo do outro */
+    gap: 2em;
+}
+
+aside {
+    width: 100%; /* Ocupa a largura toda */
+    order: -1;   /* Joga a bio/foto para o topo */
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    background: var(--bg-alt);
+    padding: 15px;
+    border-radius: 4px;
+}
+
+aside img {
+    max-width: 100px; /* Foto menor e discreta */
+    border-radius: 50%; /* Circular para diferenciar */
+    margin: 0 !important;
+}
+
+/* Estilo para a lista de posts */
+section ul {
+    padding: 0;
+    list-style: none;
+}
+
+section ul li {
+    margin-bottom: 1.5em;
+    display: flex;
+    flex-direction: column;
+}
+
+section ul li span {
+    font-size: 0.85em;
+    color: var(--gray);
+}
+
+/* Rodapé discreto */
+footer {
+    border-top: 1px solid var(--bg-alt);
+    margin-top: 4em;
+    color: var(--gray);
+}
+
+footer a { color: var(--gray); border: none !important; padding: 0 !important; }
+
+/* Ajustes para Mobile */
+@media(max-width: 560px) {
+    aside { flex-direction: column; text-align: center; }
 }

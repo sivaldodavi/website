@@ -1,0 +1,42 @@
+/* Estética Terminal/Plain-Text */
+body {
+    font-family: monospace; /* Fonte padrão do sistema, sem carregar arquivos externos */
+    line-height: 1.5;
+    max-width: 750px;
+    margin: 40px auto;
+    padding: 0 15px;
+    background: #111; /* Preto puro ou quase preto */
+    color: #ccc;
+}
+
+/* Títulos simples */
+h1, h2, h3 { color: #fff; text-align: left; }
+h2 { border-bottom: 1px solid #333; padding-bottom: 5px; margin-top: 2em; }
+
+/* Links padrão da "Web Raiz" */
+a { color: #fe8019; text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* Navegação em lista simples (muito Wibby) */
+nav ul { padding: 0; list-style: none; display: flex; gap: 15px; }
+nav ul li { display: inline; }
+nav ul li::after { content: " |"; }
+nav ul li:last-child::after { content: ""; }
+
+/* Layout Linear (sem flexbox complexo ou colunas) */
+main { display: block; }
+
+/* Imagens leves */
+img { max-width: 100%; height: auto; border: 1px solid #333; }
+.profile-pic { width: 150px; float: left; margin: 0 20px 20px 0; }
+
+/* Elementos de código (sua cara!) */
+code { background: #222; padding: 2px 4px; color: #fabd2f; }
+pre { background: #000; padding: 15px; border: 1px solid #333; overflow-x: auto; }
+
+footer { margin-top: 50px; border-top: 1px solid #333; padding-top: 20px; font-size: 0.9em; color: #666; }
+
+/* Responsividade básica para celular */
+@media (max-width: 600px) {
+    .profile-pic { float: none; display: block; margin: 0 auto 20px auto; }
+}
